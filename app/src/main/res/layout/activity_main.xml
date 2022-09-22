@@ -144,8 +144,6 @@
         android:contentDescription="@string/app_name"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@+id/bottomCard3"
-        app:layout_constraintEnd_toStartOf="@+id/secondCard4"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/secondCard2"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.942"
@@ -160,8 +158,60 @@
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@+id/bottomCard4"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/secondCard3"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.942"
+        app:srcCompat="@drawable/joker" />
+
+    <ImageButton
+        android:id="@+id/thirdCard1"
+        android:layout_width="90dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="4dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/secondCard1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.882"
+        app:srcCompat="@drawable/joker" />
+
+    <ImageButton
+        android:id="@+id/thirdCard2"
+        android:layout_width="90dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="16dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/secondCard2"
+        app:layout_constraintStart_toEndOf="@+id/thirdCard1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.882"
+        app:srcCompat="@drawable/joker" />
+
+    <ImageButton
+        android:id="@+id/thirdCard3"
+        android:layout_width="90dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="12dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/secondCard3"
+        app:layout_constraintStart_toEndOf="@+id/thirdCard2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.882"
+        app:srcCompat="@drawable/joker" />
+
+    <ImageButton
+        android:id="@+id/thirdCard4"
+        android:layout_width="90dp"
+        android:layout_height="120dp"
+        android:layout_marginEnd="4dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/secondCard4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/thirdCard3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.882"
         app:srcCompat="@drawable/joker" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

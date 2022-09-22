@@ -18,18 +18,24 @@ class MainActivity : AppCompatActivity() {
     lateinit var secondCard2: ImageButton
     lateinit var secondCard3: ImageButton
     lateinit var secondCard4: ImageButton
+    lateinit var thirdCard1: ImageButton
+    lateinit var thirdCard2: ImageButton
+    lateinit var thirdCard3: ImageButton
+    lateinit var thirdCard4: ImageButton
     lateinit var buttonLower: Button
     lateinit var buttonHigher: Button
     var firstRowCardValue = 0 //int of value for card picked in first row
     var secondRowCardValue = 0
+    var thirdRowCardValue = 0
     var randomCardValue = 0
+    val deckSize = 1..52
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
 
-        val deckSize = 1..52
+
 
         val card1h = Card(R.drawable.h1, 1, "h")
         val card2h = Card(R.drawable.h2, 2, "h")
@@ -151,6 +157,10 @@ class MainActivity : AppCompatActivity() {
         secondCard2 = findViewById(R.id.secondCard2)
         secondCard3 = findViewById(R.id.secondCard3)
         secondCard4 = findViewById(R.id.secondCard4)
+        thirdCard1 = findViewById(R.id.thirdCard1)
+        thirdCard2 = findViewById(R.id.thirdCard2)
+        thirdCard3 = findViewById(R.id.thirdCard3)
+        thirdCard4 = findViewById(R.id.thirdCard4)
         buttonLower = findViewById(R.id.buttonLower)
         buttonHigher = findViewById(R.id.buttonHigher)
         buttonLower.visibility = View.INVISIBLE
@@ -165,6 +175,7 @@ class MainActivity : AppCompatActivity() {
             buttonHigher.visibility = View.VISIBLE
             randomCardValue = deck[random].value
             disableSecondRow()
+            disableThirdRow()
 
         }
         bottomCard1.setOnClickListener {
@@ -210,6 +221,7 @@ class MainActivity : AppCompatActivity() {
             secondCard1.setImageResource(deck[random].image)
             secondRowCardValue = deck[random].value
             disableSecondRow()
+            checkSecondRow()
 
 
         }
@@ -218,6 +230,7 @@ class MainActivity : AppCompatActivity() {
             secondCard2.setImageResource(deck[random].image)
             secondRowCardValue = deck[random].value
             disableSecondRow()
+            checkSecondRow()
 
 
 
@@ -227,6 +240,7 @@ class MainActivity : AppCompatActivity() {
             secondCard3.setImageResource(deck[random].image)
             secondRowCardValue = deck[random].value
             disableSecondRow()
+            checkSecondRow()
 
 
 
@@ -236,6 +250,42 @@ class MainActivity : AppCompatActivity() {
             secondCard4.setImageResource(deck[random].image)
             secondRowCardValue = deck[random].value
             disableSecondRow()
+            checkSecondRow()
+
+
+
+        }
+        thirdCard1.setOnClickListener {
+            val random = (deckSize).shuffled().first()
+            thirdCard1.setImageResource(deck[random].image)
+            thirdRowCardValue = deck[random].value
+            disableThirdRow()
+
+
+        }
+        thirdCard2.setOnClickListener {
+            val random = (deckSize).shuffled().first()
+            thirdCard2.setImageResource(deck[random].image)
+            thirdRowCardValue = deck[random].value
+            disableThirdRow()
+
+
+
+        }
+        thirdCard3.setOnClickListener {
+            val random = (deckSize).shuffled().first()
+            thirdCard3.setImageResource(deck[random].image)
+            thirdRowCardValue = deck[random].value
+            disableThirdRow()
+
+
+
+        }
+        thirdCard4.setOnClickListener {
+            val random = (deckSize).shuffled().first()
+            thirdCard4.setImageResource(deck[random].image)
+            thirdRowCardValue = deck[random].value
+            disableThirdRow()
 
 
 
@@ -260,6 +310,20 @@ class MainActivity : AppCompatActivity() {
             secondCard2.isEnabled = true
             secondCard3.isEnabled = true
             secondCard4.isEnabled = true
+        }
+    }
+    fun disableThirdRow(){
+        thirdCard1.isEnabled = false
+        thirdCard2.isEnabled = false
+        thirdCard3.isEnabled = false
+        thirdCard4.isEnabled = false
+    }
+    fun checkSecondRow(){
+        if (firstRowCardValue < secondRowCardValue){
+            thirdCard1.isEnabled = true
+            thirdCard2.isEnabled = true
+            thirdCard3.isEnabled = true
+            thirdCard4.isEnabled = true
         }
     }
 
