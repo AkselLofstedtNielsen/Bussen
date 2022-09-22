@@ -14,16 +14,22 @@ class MainActivity : AppCompatActivity() {
     lateinit var bottomCard2: ImageButton
     lateinit var bottomCard3: ImageButton
     lateinit var bottomCard4: ImageButton
+    lateinit var secondCard1: ImageButton
+    lateinit var secondCard2: ImageButton
+    lateinit var secondCard3: ImageButton
+    lateinit var secondCard4: ImageButton
     lateinit var buttonLower: Button
     lateinit var buttonHigher: Button
-
+    var firstRowCardValue = 0 //int of value for card picked in first row
+    var secondRowCardValue = 0
+    var randomCardValue = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var firstRowCardValue = 0 //int of value for card picked in first row
-        var randomCardValue = 0
+
+        val deckSize = 1..52
 
         val card1h = Card(R.drawable.h1, 1, "h")
         val card2h = Card(R.drawable.h2, 2, "h")
@@ -81,7 +87,7 @@ class MainActivity : AppCompatActivity() {
         val card12c = Card(R.drawable.c12, 12, "c")
         val card13c = Card(R.drawable.c13, 13, "c")
 
-        var deck = mutableListOf<Card>(
+        val deck = mutableListOf<Card>(
             card1h,
             card2h,
             card3h,
@@ -141,6 +147,10 @@ class MainActivity : AppCompatActivity() {
         bottomCard2 = findViewById(R.id.bottomCard2)
         bottomCard3 = findViewById(R.id.bottomCard3)
         bottomCard4 = findViewById(R.id.bottomCard4)
+        secondCard1 = findViewById(R.id.secondCard1)
+        secondCard2 = findViewById(R.id.secondCard2)
+        secondCard3 = findViewById(R.id.secondCard3)
+        secondCard4 = findViewById(R.id.secondCard4)
         buttonLower = findViewById(R.id.buttonLower)
         buttonHigher = findViewById(R.id.buttonHigher)
         buttonLower.visibility = View.INVISIBLE
@@ -149,48 +159,87 @@ class MainActivity : AppCompatActivity() {
         //int of value for card picked in first row
 
         randomCardButton.setOnClickListener {
-            var random = (1..52).shuffled().first()
+            val random = (deckSize).shuffled().first()
             randomCardButton.setImageResource(deck[random].image)
             buttonLower.visibility = View.VISIBLE
             buttonHigher.visibility = View.VISIBLE
             randomCardValue = deck[random].value
+            disableSecondRow()
 
         }
         bottomCard1.setOnClickListener {
-            var random = (1..52).shuffled().first()//shuffled 1..52 int so its "random" but usable again inside the {}
+            val random = (deckSize).shuffled().first()//shuffled 1..52 int so its "random" but usable again inside the {}
             bottomCard1.setImageResource(deck[random].image)
-            disableFirstRow()
             firstRowCardValue = deck[random].value
-
+            disableFirstRow()
+            checkFirstRow()
 
 
         }
         bottomCard2.setOnClickListener {
-            var random = (1..52).shuffled().first()
+            val random = (deckSize).shuffled().first()
             bottomCard2.setImageResource(deck[random].image)
-            disableFirstRow()
             firstRowCardValue = deck[random].value
+            disableFirstRow()
+            checkFirstRow()
 
 
         }
-            bottomCard3.setOnClickListener {
-                var random = (1..52).shuffled().first()
-                bottomCard3.setImageResource(deck[random].image)
-                disableFirstRow()
-                firstRowCardValue = deck[random].value
+        bottomCard3.setOnClickListener {
+            val random = (deckSize).shuffled().first()
+            bottomCard3.setImageResource(deck[random].image)
+            firstRowCardValue = deck[random].value
+            disableFirstRow()
+            checkFirstRow()
 
 
-            }
-            bottomCard4.setOnClickListener {
-                var random = (1..52).shuffled().first()
-                bottomCard4.setImageResource(deck[random].image)
-                disableFirstRow()
-                firstRowCardValue = deck[random].value
+        }
+        bottomCard4.setOnClickListener {
+            val random = (deckSize).shuffled().first()
+            bottomCard4.setImageResource(deck[random].image)
+            firstRowCardValue = deck[random].value
+            disableFirstRow()
+            checkFirstRow()
+
+
+        }
+
+
+        secondCard1.setOnClickListener {
+            val random = (deckSize).shuffled().first()
+            secondCard1.setImageResource(deck[random].image)
+            secondRowCardValue = deck[random].value
+            disableSecondRow()
+
+
+        }
+        secondCard2.setOnClickListener {
+            val random = (deckSize).shuffled().first()
+            secondCard2.setImageResource(deck[random].image)
+            secondRowCardValue = deck[random].value
+            disableSecondRow()
 
 
 
+        }
+        secondCard3.setOnClickListener {
+            val random = (deckSize).shuffled().first()
+            secondCard3.setImageResource(deck[random].image)
+            secondRowCardValue = deck[random].value
+            disableSecondRow()
 
-            }
+
+
+        }
+        secondCard4.setOnClickListener {
+            val random = (deckSize).shuffled().first()
+            secondCard4.setImageResource(deck[random].image)
+            secondRowCardValue = deck[random].value
+            disableSecondRow()
+
+
+
+        }
 
         }
     fun disableFirstRow() {
@@ -199,6 +248,21 @@ class MainActivity : AppCompatActivity() {
         bottomCard3.isEnabled = false
         bottomCard4.isEnabled = false
     }
+    fun disableSecondRow(){
+        secondCard1.isEnabled = false
+        secondCard2.isEnabled = false
+        secondCard3.isEnabled = false
+        secondCard4.isEnabled = false
+    }
+    fun checkFirstRow(){
+        if (randomCardValue < firstRowCardValue){
+            secondCard1.isEnabled = true
+            secondCard2.isEnabled = true
+            secondCard3.isEnabled = true
+            secondCard4.isEnabled = true
+        }
+    }
+
     }
 
 
