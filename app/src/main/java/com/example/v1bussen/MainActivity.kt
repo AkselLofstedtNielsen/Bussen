@@ -1,5 +1,6 @@
 package com.example.v1bussen
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -420,6 +421,14 @@ class MainActivity : AppCompatActivity() {
             forthCard1.setImageResource(deck[random[5]].image)
             forthRowCardValue = deck[random[5]].value
             disableForthRow()
+            if(btnHigher == false){
+                btnHigher = true
+                checkWinHigher()
+            }
+            else if (btnLower == false){
+                btnLower = true
+                checkWinLower()
+            }
 
 
         }
@@ -428,6 +437,14 @@ class MainActivity : AppCompatActivity() {
             forthCard2.setImageResource(deck[random[5]].image)
             forthRowCardValue = deck[random[5]].value
             disableForthRow()
+            if(btnHigher == false){
+                btnHigher = true
+                checkWinHigher()
+            }
+            else if (btnLower == false){
+                btnLower = true
+                checkWinLower()
+            }
 
 
         }
@@ -436,6 +453,14 @@ class MainActivity : AppCompatActivity() {
             forthCard3.setImageResource(deck[random[5]].image)
             forthRowCardValue = deck[random[5]].value
             disableForthRow()
+            if(btnHigher == false){
+                btnHigher = true
+                checkWinHigher()
+            }
+            else if (btnLower == false){
+                btnLower = true
+                checkWinLower()
+            }
 
 
         }
@@ -444,6 +469,14 @@ class MainActivity : AppCompatActivity() {
             forthCard4.setImageResource(deck[random[5]].image)
             forthRowCardValue = deck[random[5]].value
             disableForthRow()
+            if(btnHigher == false){
+                btnHigher = true
+                checkWinHigher()
+            }
+            else if (btnLower == false){
+                btnLower = true
+                checkWinLower()
+            }
 
 
         }
@@ -529,7 +562,18 @@ class MainActivity : AppCompatActivity() {
             forthCard4.isEnabled = true
         }
     }
-
+    fun checkWinHigher(){
+        if (thirdRowCardValue < forthRowCardValue) {
+            val intent = Intent(this, CorrectActivity::class.java)
+            startActivity(intent)
+        }
+    }
+    fun checkWinLower(){
+        if (thirdRowCardValue > forthRowCardValue) {
+            val intent = Intent(this, CorrectActivity::class.java)
+            startActivity(intent)
+        }
+    }
 
 
 
