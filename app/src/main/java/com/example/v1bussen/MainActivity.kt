@@ -2,12 +2,13 @@ package com.example.v1bussen
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 
 class MainActivity : AppCompatActivity() {
+    //https://www.youtube.com/watch?v=n58N9VH3wVc&ab_channel=Smartherd gruppknappar
+
 
     lateinit var randomCardButton: ImageButton
     lateinit var bottomCard1: ImageButton
@@ -36,11 +37,14 @@ class MainActivity : AppCompatActivity() {
     var randomCardValue = 0
     val deckSize = 1..52
     val random = (deckSize).shuffled()
+    var btnHigher = true
+    var btnLower = true
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
 
         val card1h = Card(R.drawable.h1, 1, "h")
         val card2h = Card(R.drawable.h2, 2, "h")
@@ -153,6 +157,9 @@ class MainActivity : AppCompatActivity() {
             card13c
         )
 
+
+
+
         randomCardButton = findViewById(R.id.randomCardButton)
 
         bottomCard1 = findViewById(R.id.bottomCard1)
@@ -182,6 +189,7 @@ class MainActivity : AppCompatActivity() {
         buttonHigher.visibility = View.INVISIBLE
 
 
+
         disableFirstRow()
         disableSecondRow()
         disableThirdRow()
@@ -200,12 +208,28 @@ class MainActivity : AppCompatActivity() {
 
 
         }
+        buttonHigher.setOnClickListener {
+            btnHigher = false
+        }
+        buttonLower.setOnClickListener {
+            btnLower = false
+        }
+
+
         bottomCard1.setOnClickListener {
+
             //shuffled 1..52 int so its "random" but usable again inside the {}
             bottomCard1.setImageResource(deck[random[2]].image)
             firstRowCardValue = deck[random[2]].value
             disableFirstRow()
-            checkFirstRow()
+            if(btnHigher == false){
+                btnHigher = true
+                checkHigherFirstRow()
+            }
+            else if (btnLower == false){
+                btnLower = true
+                checkLowerFirstRow()
+            }
 
 
         }
@@ -214,7 +238,15 @@ class MainActivity : AppCompatActivity() {
             bottomCard2.setImageResource(deck[random[2]].image)
             firstRowCardValue = deck[random[2]].value
             disableFirstRow()
-            checkFirstRow()
+            if(btnHigher == false){
+                btnHigher = true
+                checkHigherFirstRow()
+            }
+            else if (btnLower == false){
+                btnLower = true
+                checkLowerFirstRow()
+            }
+
 
 
         }
@@ -222,7 +254,15 @@ class MainActivity : AppCompatActivity() {
             bottomCard3.setImageResource(deck[random[2]].image)
             firstRowCardValue = deck[random[2]].value
             disableFirstRow()
-            checkFirstRow()
+            if(btnHigher == false){
+                btnHigher = true
+                checkHigherFirstRow()
+            }
+            else if (btnLower == false){
+                btnLower = true
+                checkLowerFirstRow()
+            }
+
 
 
         }
@@ -231,7 +271,15 @@ class MainActivity : AppCompatActivity() {
             bottomCard4.setImageResource(deck[random[2]].image)
             firstRowCardValue = deck[random[2]].value
             disableFirstRow()
-            checkFirstRow()
+            if(btnHigher == false){
+                btnHigher = true
+                checkHigherFirstRow()
+            }
+            else if (btnLower == false){
+                btnLower = true
+                checkLowerFirstRow()
+            }
+
 
 
         }
@@ -242,7 +290,15 @@ class MainActivity : AppCompatActivity() {
             secondCard1.setImageResource(deck[random[3]].image)
             secondRowCardValue = deck[random[3]].value
             disableSecondRow()
-            checkSecondRow()
+
+            if(btnHigher == false){
+                btnHigher = true
+                checkHigherSecondRow()
+            }
+            else if (btnLower == false){
+                btnLower = true
+                checkLowerSecondRow()
+            }
 
 
         }
@@ -250,7 +306,15 @@ class MainActivity : AppCompatActivity() {
             secondCard2.setImageResource(deck[random[3]].image)
             secondRowCardValue = deck[random[3]].value
             disableSecondRow()
-            checkSecondRow()
+
+            if(btnHigher == false){
+                btnHigher = true
+                checkHigherSecondRow()
+            }
+            else if (btnLower == false){
+                btnLower = true
+                checkLowerSecondRow()
+            }
 
 
         }
@@ -259,7 +323,15 @@ class MainActivity : AppCompatActivity() {
             secondCard3.setImageResource(deck[random[3]].image)
             secondRowCardValue = deck[random[3]].value
             disableSecondRow()
-            checkSecondRow()
+
+            if(btnHigher == false){
+                btnHigher = true
+                checkHigherSecondRow()
+            }
+            else if (btnLower == false){
+                btnLower = true
+                checkLowerSecondRow()
+            }
 
 
         }
@@ -267,7 +339,15 @@ class MainActivity : AppCompatActivity() {
             secondCard4.setImageResource(deck[random[3]].image)
             secondRowCardValue = deck[random[3]].value
             disableSecondRow()
-            checkSecondRow()
+
+            if(btnHigher == false){
+                btnHigher = true
+                checkHigherSecondRow()
+            }
+            else if (btnLower == false){
+                btnLower = true
+                checkLowerSecondRow()
+            }
 
 
         }
@@ -276,7 +356,14 @@ class MainActivity : AppCompatActivity() {
             thirdCard1.setImageResource(deck[random[4]].image)
             thirdRowCardValue = deck[random[4]].value
             disableThirdRow()
-            checkThirdRow()
+            if(btnHigher == false){
+                btnHigher = true
+                checkHigherThirdRow()
+            }
+            else if (btnLower == false){
+                btnLower = true
+                checkLowerThirdRow()
+            }
 
 
         }
@@ -285,7 +372,14 @@ class MainActivity : AppCompatActivity() {
             thirdCard2.setImageResource(deck[random[4]].image)
             thirdRowCardValue = deck[random[4]].value
             disableThirdRow()
-            checkThirdRow()
+            if(btnHigher == false){
+                btnHigher = true
+                checkHigherThirdRow()
+            }
+            else if (btnLower == false){
+                btnLower = true
+                checkLowerThirdRow()
+            }
 
 
         }
@@ -294,7 +388,14 @@ class MainActivity : AppCompatActivity() {
             thirdCard3.setImageResource(deck[random[4]].image)
             thirdRowCardValue = deck[random[4]].value
             disableThirdRow()
-            checkThirdRow()
+            if(btnHigher == false){
+                btnHigher = true
+                checkHigherThirdRow()
+            }
+            else if (btnLower == false){
+                btnLower = true
+                checkLowerThirdRow()
+            }
 
 
         }
@@ -303,7 +404,14 @@ class MainActivity : AppCompatActivity() {
             thirdCard4.setImageResource(deck[random[4]].image)
             thirdRowCardValue = deck[random[4]].value
             disableThirdRow()
-            checkThirdRow()
+            if(btnHigher == false){
+                btnHigher = true
+                checkHigherThirdRow()
+            }
+            else if (btnLower == false){
+                btnLower = true
+                checkLowerThirdRow()
+            }
 
 
         }
@@ -371,7 +479,7 @@ class MainActivity : AppCompatActivity() {
         forthCard4.isEnabled = false
     }
 
-    fun checkFirstRow() {
+    fun checkHigherFirstRow() {
         if (randomCardValue < firstRowCardValue) {
             secondCard1.isEnabled = true
             secondCard2.isEnabled = true
@@ -379,8 +487,16 @@ class MainActivity : AppCompatActivity() {
             secondCard4.isEnabled = true
         }
     }
+    fun checkLowerFirstRow() {
+        if (randomCardValue > firstRowCardValue) {
+            secondCard1.isEnabled = true
+            secondCard2.isEnabled = true
+            secondCard3.isEnabled = true
+            secondCard4.isEnabled = true
+        }
+    }
 
-    fun checkSecondRow() {
+    fun checkHigherSecondRow() {
         if (firstRowCardValue < secondRowCardValue) {
             thirdCard1.isEnabled = true
             thirdCard2.isEnabled = true
@@ -388,8 +504,16 @@ class MainActivity : AppCompatActivity() {
             thirdCard4.isEnabled = true
         }
     }
+    fun checkLowerSecondRow() {
+        if (firstRowCardValue > secondRowCardValue) {
+            thirdCard1.isEnabled = true
+            thirdCard2.isEnabled = true
+            thirdCard3.isEnabled = true
+            thirdCard4.isEnabled = true
+        }
+    }
 
-    fun checkThirdRow() {
+    fun checkHigherThirdRow() {
         if (secondRowCardValue < thirdRowCardValue) {
             forthCard1.isEnabled = true
             forthCard2.isEnabled = true
@@ -397,6 +521,16 @@ class MainActivity : AppCompatActivity() {
             forthCard4.isEnabled = true
         }
     }
+    fun checkLowerThirdRow() {
+        if (secondRowCardValue > thirdRowCardValue) {
+            forthCard1.isEnabled = true
+            forthCard2.isEnabled = true
+            forthCard3.isEnabled = true
+            forthCard4.isEnabled = true
+        }
+    }
+
+
 
 
 }
