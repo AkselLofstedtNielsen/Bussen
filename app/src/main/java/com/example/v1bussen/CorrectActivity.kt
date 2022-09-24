@@ -13,7 +13,7 @@ class CorrectActivity : AppCompatActivity() {
         setContentView(R.layout.activity_correct)
 
         textView = findViewById(R.id.textView)
-        textView.text ="GOOD JOB!"
+        textView.text ="GG EZ!"
 
     }
 }
