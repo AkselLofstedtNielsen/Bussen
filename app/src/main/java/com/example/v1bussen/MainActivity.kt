@@ -8,7 +8,7 @@ import android.widget.Button
 import android.widget.ImageButton
 
 class MainActivity : AppCompatActivity() {
-    //https://www.youtube.com/watch?v=n58N9VH3wVc&ab_channel=Smartherd gruppknappar
+
 
 
     lateinit var randomCardButton: ImageButton
