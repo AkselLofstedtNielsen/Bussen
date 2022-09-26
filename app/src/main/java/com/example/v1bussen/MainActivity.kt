@@ -513,12 +513,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun checkHigherFirstRow() {
-        if (randomCardValue < firstRowCardValue) {
+        if (randomCardValue < firstRowCardValue ) {
             secondCard1.isEnabled = true
             secondCard2.isEnabled = true
             secondCard3.isEnabled = true
             secondCard4.isEnabled = true
         }
+        else {
+            val intent = Intent(this, LooseActivity::class.java)
+            startActivity(intent)
+        }
+
     }
     fun checkLowerFirstRow() {
         if (randomCardValue > firstRowCardValue) {
@@ -526,6 +531,10 @@ class MainActivity : AppCompatActivity() {
             secondCard2.isEnabled = true
             secondCard3.isEnabled = true
             secondCard4.isEnabled = true
+        }
+        else {
+            val intent = Intent(this, LooseActivity::class.java)
+            startActivity(intent)
         }
     }
 
@@ -536,6 +545,10 @@ class MainActivity : AppCompatActivity() {
             thirdCard3.isEnabled = true
             thirdCard4.isEnabled = true
         }
+        else {
+            val intent = Intent(this, LooseActivity::class.java)
+            startActivity(intent)
+        }
     }
     fun checkLowerSecondRow() {
         if (firstRowCardValue > secondRowCardValue) {
@@ -543,6 +556,10 @@ class MainActivity : AppCompatActivity() {
             thirdCard2.isEnabled = true
             thirdCard3.isEnabled = true
             thirdCard4.isEnabled = true
+        }
+        else {
+            val intent = Intent(this, LooseActivity::class.java)
+            startActivity(intent)
         }
     }
 
@@ -553,6 +570,10 @@ class MainActivity : AppCompatActivity() {
             forthCard3.isEnabled = true
             forthCard4.isEnabled = true
         }
+        else {
+            val intent = Intent(this, LooseActivity::class.java)
+            startActivity(intent)
+        }
     }
     fun checkLowerThirdRow() {
         if (secondRowCardValue > thirdRowCardValue) {
@@ -561,16 +582,28 @@ class MainActivity : AppCompatActivity() {
             forthCard3.isEnabled = true
             forthCard4.isEnabled = true
         }
+        else {
+            val intent = Intent(this, LooseActivity::class.java)
+            startActivity(intent)
+        }
     }
     fun checkWinHigher(){
         if (thirdRowCardValue < forthRowCardValue) {
             val intent = Intent(this, CorrectActivity::class.java)
             startActivity(intent)
         }
+        else {
+            val intent = Intent(this, LooseActivity::class.java)
+            startActivity(intent)
+        }
     }
     fun checkWinLower(){
         if (thirdRowCardValue > forthRowCardValue) {
             val intent = Intent(this, CorrectActivity::class.java)
+            startActivity(intent)
+        }
+        else {
+            val intent = Intent(this, LooseActivity::class.java)
             startActivity(intent)
         }
     }
