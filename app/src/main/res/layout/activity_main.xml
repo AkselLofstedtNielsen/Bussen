@@ -13,9 +13,10 @@
         android:layout_height="135dp"
         android:layout_marginStart="16dp"
         android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/imageButton10"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/joker" />
+        app:srcCompat="@drawable/Joker" />
 
     <ImageButton
         android:id="@+id/imageButton16"
@@ -23,7 +24,7 @@
         android:layout_height="135dp"
         android:scaleType="centerCrop"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/joker"
+        app:srcCompat="@drawable/Joker"
         tools:layout_editor_absoluteX="117dp" />
 
     <ImageButton
@@ -32,7 +33,7 @@
         android:layout_height="135dp"
         android:scaleType="centerCrop"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/joker"
+        app:srcCompat="@drawable/Joker"
         tools:layout_editor_absoluteX="212dp" />
 
     <ImageButton
@@ -41,7 +42,7 @@
         android:layout_height="135dp"
         android:scaleType="centerCrop"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/joker"
+        app:srcCompat="@drawable/Joker"
         tools:layout_editor_absoluteX="307dp" />
 
     <ImageButton
@@ -49,10 +50,11 @@
         android:layout_width="88dp"
         android:layout_height="135dp"
         android:layout_marginStart="16dp"
+        android:layout_marginBottom="12dp"
         android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/imageButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton14"
-        app:srcCompat="@drawable/joker" />
+        app:srcCompat="@drawable/Joker" />
 
     <ImageButton
         android:id="@+id/imageButton12"
@@ -60,7 +62,7 @@
         android:layout_height="135dp"
         android:scaleType="centerCrop"
         app:layout_constraintTop_toBottomOf="@+id/imageButton15"
-        app:srcCompat="@drawable/joker"
+        app:srcCompat="@drawable/Joker"
         tools:layout_editor_absoluteX="307dp" />
 
     <ImageButton
@@ -69,7 +71,7 @@
         android:layout_height="135dp"
         android:scaleType="centerCrop"
         app:layout_constraintTop_toBottomOf="@+id/imageButton16"
-        app:srcCompat="@drawable/joker"
+        app:srcCompat="@drawable/Joker"
         tools:layout_editor_absoluteX="117dp" />
 
     <ImageButton
@@ -78,7 +80,7 @@
         android:layout_height="135dp"
         android:scaleType="centerCrop"
         app:layout_constraintTop_toBottomOf="@+id/imageButton17"
-        app:srcCompat="@drawable/joker"
+        app:srcCompat="@drawable/Joker"
         tools:layout_editor_absoluteX="212dp" />
 
     <ImageButton
@@ -87,16 +89,16 @@
         android:layout_height="135dp"
         android:layout_marginStart="16dp"
         android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton"
-        app:srcCompat="@drawable/joker" />
+        app:srcCompat="@drawable/Joker" />
 
     <ImageButton
         android:id="@+id/imageButton8"
         android:layout_width="88dp"
         android:layout_height="135dp"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/joker"
+        app:srcCompat="@drawable/Joker"
         tools:layout_editor_absoluteX="117dp"
         tools:layout_editor_absoluteY="405dp" />
 
@@ -110,7 +112,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton4"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/joker" />
+        app:srcCompat="@drawable/Joker" />
 
     <ImageButton
         android:id="@+id/imageButton7"
@@ -118,7 +120,7 @@
         android:layout_height="135dp"
         android:scaleType="centerCrop"
         app:layout_constraintTop_toBottomOf="@+id/imageButton3"
-        app:srcCompat="@drawable/joker"
+        app:srcCompat="@drawable/Joker"
         tools:layout_editor_absoluteX="212dp" />
 
     <ImageButton
@@ -128,7 +130,7 @@
         android:layout_marginBottom="16dp"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:srcCompat="@drawable/joker"
+        app:srcCompat="@drawable/Joker"
         tools:layout_editor_absoluteX="307dp" />
 
     <ImageButton
@@ -136,10 +138,11 @@
         android:layout_width="88dp"
         android:layout_height="135dp"
         android:layout_marginStart="16dp"
+        android:layout_marginBottom="12dp"
         android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/imageButton6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton10"
-        app:srcCompat="@drawable/joker" />
+        app:srcCompat="@drawable/Joker" />
 
     <ImageButton
         android:id="@+id/imageButton3"
@@ -147,7 +150,7 @@
         android:layout_height="135dp"
         android:scaleType="centerCrop"
         app:layout_constraintTop_toBottomOf="@+id/imageButton11"
-        app:srcCompat="@drawable/joker"
+        app:srcCompat="@drawable/Joker"
         tools:layout_editor_absoluteX="212dp" />
 
     <ImageButton
@@ -156,7 +159,7 @@
         android:layout_height="135dp"
         android:scaleType="centerCrop"
         app:layout_constraintTop_toBottomOf="@+id/imageButton12"
-        app:srcCompat="@drawable/joker"
+        app:srcCompat="@drawable/Joker"
         tools:layout_editor_absoluteX="307dp" />
 
     <ImageButton
@@ -165,7 +168,7 @@
         android:layout_height="135dp"
         android:scaleType="centerCrop"
         app:layout_constraintTop_toBottomOf="@+id/imageButton13"
-        app:srcCompat="@drawable/joker"
+        app:srcCompat="@drawable/Joker"
         tools:layout_editor_absoluteX="117dp" />
 
     <Button
