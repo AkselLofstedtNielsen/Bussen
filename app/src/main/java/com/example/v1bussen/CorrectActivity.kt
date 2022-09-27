@@ -30,7 +30,7 @@ class CorrectActivity : AppCompatActivity() {
         winButton.setOnClickListener {
             textView.visibility = View.VISIBLE
             konfettiView.build()
-                .addColors(Color.YELLOW,Color.GREEN,Color.MAGENTA)
+                .addColors(Color.BLACK,Color.RED,Color.MAGENTA)
                 .setDirection(0.0,359.0)
                 .setSpeed(1f,5f)
                 .setFadeOutEnabled(true)

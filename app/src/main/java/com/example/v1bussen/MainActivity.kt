@@ -36,8 +36,7 @@ class MainActivity : AppCompatActivity() {
     var thirdRowCardValue = 0
     var forthRowCardValue = 0
     var randomCardValue = 0
-    val deckSize = 1..52
-    val random = (deckSize).shuffled()
+
     var btnHigher = true
     var btnLower = true
 
@@ -47,119 +46,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val card1h = Card(R.drawable.h1, 1, "h")
-        val card2h = Card(R.drawable.h2, 2, "h")
-        val card3h = Card(R.drawable.h3, 3, "h")
-        val card4h = Card(R.drawable.h4, 4, "h")
-        val card5h = Card(R.drawable.h5, 5, "h")
-        val card6h = Card(R.drawable.h6, 6, "h")
-        val card7h = Card(R.drawable.h7, 7, "h")
-        val card8h = Card(R.drawable.h8, 8, "h")
-        val card9h = Card(R.drawable.h9, 9, "h")
-        val card10h = Card(R.drawable.h11, 10, "h")
-        val card11h = Card(R.drawable.h11, 11, "h")
-        val card12h = Card(R.drawable.h12, 12, "h")
-        val card13h = Card(R.drawable.h13, 13, "h")
-
-        val card1s = Card(R.drawable.s1, 1, "s")
-        val card2s = Card(R.drawable.s2, 2, "s")
-        val card3s = Card(R.drawable.s3, 3, "s")
-        val card4s = Card(R.drawable.s4, 4, "s")
-        val card5s = Card(R.drawable.s5, 5, "s")
-        val card6s = Card(R.drawable.s6, 6, "s")
-        val card7s = Card(R.drawable.s7, 7, "s")
-        val card8s = Card(R.drawable.s8, 8, "s")
-        val card9s = Card(R.drawable.s9, 9, "s")
-        val card10s = Card(R.drawable.s11, 10, "s")
-        val card11s = Card(R.drawable.s11, 11, "s")
-        val card12s = Card(R.drawable.s12, 12, "s")
-        val card13s = Card(R.drawable.s13, 13, "s")
-
-        val card1r = Card(R.drawable.r1, 1, "r")
-        val card2r = Card(R.drawable.r2, 2, "r")
-        val card3r = Card(R.drawable.r3, 3, "r")
-        val card4r = Card(R.drawable.r4, 4, "r")
-        val card5r = Card(R.drawable.r5, 5, "r")
-        val card6r = Card(R.drawable.r6, 6, "r")
-        val card7r = Card(R.drawable.r7, 7, "r")
-        val card8r = Card(R.drawable.r8, 8, "r")
-        val card9r = Card(R.drawable.r9, 9, "r")
-        val card10r = Card(R.drawable.r11, 10, "r")
-        val card11r = Card(R.drawable.r11, 11, "r")
-        val card12r = Card(R.drawable.r12, 12, "r")
-        val card13r = Card(R.drawable.r13, 13, "r")
-
-        val card1c = Card(R.drawable.c1, 1, "c")
-        val card2c = Card(R.drawable.c2, 2, "c")
-        val card3c = Card(R.drawable.c3, 3, "c")
-        val card4c = Card(R.drawable.c4, 4, "c")
-        val card5c = Card(R.drawable.c5, 5, "c")
-        val card6c = Card(R.drawable.c6, 6, "c")
-        val card7c = Card(R.drawable.c7, 7, "c")
-        val card8c = Card(R.drawable.c8, 8, "c")
-        val card9c = Card(R.drawable.c9, 9, "c")
-        val card10c = Card(R.drawable.c11, 10, "c")
-        val card11c = Card(R.drawable.c11, 11, "c")
-        val card12c = Card(R.drawable.c12, 12, "c")
-        val card13c = Card(R.drawable.c13, 13, "c")
-
-        val deck = mutableListOf<Card>(
-            card1h,
-            card2h,
-            card3h,
-            card4h,
-            card5h,
-            card6h,
-            card7h,
-            card8h,
-            card9h,
-            card10h,
-            card11h,
-            card12h,
-            card13h,
-            card1s,
-            card2s,
-            card3s,
-            card4s,
-            card5s,
-            card6s,
-            card7s,
-            card8s,
-            card9s,
-            card10s,
-            card11s,
-            card12s,
-            card13s,
-            card1r,
-            card2r,
-            card3r,
-            card4r,
-            card5r,
-            card6r,
-            card7r,
-            card8r,
-            card9r,
-            card10r,
-            card11r,
-            card12r,
-            card13r,
-            card1c,
-            card2c,
-            card3c,
-            card4c,
-            card5c,
-            card6c,
-            card7c,
-            card8c,
-            card9c,
-            card10c,
-            card11c,
-            card12c,
-            card13c
-        )
-
-
-
+        val deck = Deck()
+        val card1 = deck.getCard()
+        val card2 = deck.getCard()
+        val card3 = deck.getCard()
+        val card4 = deck.getCard()
+        val cardRandom = deck.getCard()
 
         randomCardButton = findViewById(R.id.randomCardButton)
 
@@ -198,10 +90,10 @@ class MainActivity : AppCompatActivity() {
 
         randomCardButton.setOnClickListener {
 
-            randomCardButton.setImageResource(deck[random[1]].image)
+            randomCardButton.setImageResource(cardRandom.image)
             buttonLower.visibility = View.VISIBLE
             buttonHigher.visibility = View.VISIBLE
-            randomCardValue = deck[random[1]].value
+            randomCardValue = cardRandom.value
             bottomCard1.isEnabled = true
             bottomCard2.isEnabled = true
             bottomCard3.isEnabled = true
@@ -220,66 +112,38 @@ class MainActivity : AppCompatActivity() {
         bottomCard1.setOnClickListener {
 
             //shuffled 1..52 int so its "random" but usable again inside the {}
-            bottomCard1.setImageResource(deck[random[2]].image)
-            firstRowCardValue = deck[random[2]].value
+            bottomCard1.setImageResource(card1.image)
+            firstRowCardValue = card1.value
             disableFirstRow()
-            if(btnHigher == false){
-                btnHigher = true
-                checkHigherFirstRow()
-            }
-            else if (btnLower == false){
-                btnLower = true
-                checkLowerFirstRow()
-            }
+            checkButtonFirst()
 
 
         }
         bottomCard2.setOnClickListener {
 
-            bottomCard2.setImageResource(deck[random[2]].image)
-            firstRowCardValue = deck[random[2]].value
+            bottomCard2.setImageResource(card1.image)
+            firstRowCardValue = card1.value
             disableFirstRow()
-            if(btnHigher == false){
-                btnHigher = true
-                checkHigherFirstRow()
-            }
-            else if (btnLower == false){
-                btnLower = true
-                checkLowerFirstRow()
-            }
+            checkButtonFirst()
 
 
 
         }
         bottomCard3.setOnClickListener {
-            bottomCard3.setImageResource(deck[random[2]].image)
-            firstRowCardValue = deck[random[2]].value
+            bottomCard3.setImageResource(card1.image)
+            firstRowCardValue = card1.value
             disableFirstRow()
-            if(btnHigher == false){
-                btnHigher = true
-                checkHigherFirstRow()
-            }
-            else if (btnLower == false){
-                btnLower = true
-                checkLowerFirstRow()
-            }
+            checkButtonFirst()
 
 
 
         }
         bottomCard4.setOnClickListener {
 
-            bottomCard4.setImageResource(deck[random[2]].image)
-            firstRowCardValue = deck[random[2]].value
+            bottomCard4.setImageResource(card1.image)
+            firstRowCardValue = card1.value
             disableFirstRow()
-            if(btnHigher == false){
-                btnHigher = true
-                checkHigherFirstRow()
-            }
-            else if (btnLower == false){
-                btnLower = true
-                checkLowerFirstRow()
-            }
+            checkButtonFirst()
 
 
 
@@ -288,195 +152,106 @@ class MainActivity : AppCompatActivity() {
 
         secondCard1.setOnClickListener {
 
-            secondCard1.setImageResource(deck[random[3]].image)
-            secondRowCardValue = deck[random[3]].value
+            secondCard1.setImageResource(card2.image)
+            secondRowCardValue = card2.value
             disableSecondRow()
-
-            if(btnHigher == false){
-                btnHigher = true
-                checkHigherSecondRow()
-            }
-            else if (btnLower == false){
-                btnLower = true
-                checkLowerSecondRow()
-            }
+            checkButtonSecond()
 
 
         }
         secondCard2.setOnClickListener {
-            secondCard2.setImageResource(deck[random[3]].image)
-            secondRowCardValue = deck[random[3]].value
+            secondCard2.setImageResource(card2.image)
+            secondRowCardValue = card2.value
             disableSecondRow()
-
-            if(btnHigher == false){
-                btnHigher = true
-                checkHigherSecondRow()
-            }
-            else if (btnLower == false){
-                btnLower = true
-                checkLowerSecondRow()
-            }
+            checkButtonSecond()
 
 
         }
         secondCard3.setOnClickListener {
 
-            secondCard3.setImageResource(deck[random[3]].image)
-            secondRowCardValue = deck[random[3]].value
+            secondCard3.setImageResource(card2.image)
+            secondRowCardValue = card2.value
             disableSecondRow()
-
-            if(btnHigher == false){
-                btnHigher = true
-                checkHigherSecondRow()
-            }
-            else if (btnLower == false){
-                btnLower = true
-                checkLowerSecondRow()
-            }
-
+            checkButtonSecond()
 
         }
         secondCard4.setOnClickListener {
-            secondCard4.setImageResource(deck[random[3]].image)
-            secondRowCardValue = deck[random[3]].value
+            secondCard4.setImageResource(card2.image)
+            secondRowCardValue = card2.value
             disableSecondRow()
-
-            if(btnHigher == false){
-                btnHigher = true
-                checkHigherSecondRow()
-            }
-            else if (btnLower == false){
-                btnLower = true
-                checkLowerSecondRow()
-            }
+            checkButtonSecond()
 
 
         }
         thirdCard1.setOnClickListener {
 
-            thirdCard1.setImageResource(deck[random[4]].image)
-            thirdRowCardValue = deck[random[4]].value
+            thirdCard1.setImageResource(card3.image)
+            thirdRowCardValue = card3.value
             disableThirdRow()
-            if(btnHigher == false){
-                btnHigher = true
-                checkHigherThirdRow()
-            }
-            else if (btnLower == false){
-                btnLower = true
-                checkLowerThirdRow()
-            }
+            checkButtonThird()
 
 
         }
         thirdCard2.setOnClickListener {
 
-            thirdCard2.setImageResource(deck[random[4]].image)
-            thirdRowCardValue = deck[random[4]].value
+            thirdCard2.setImageResource(card3.image)
+            thirdRowCardValue = card3.value
             disableThirdRow()
-            if(btnHigher == false){
-                btnHigher = true
-                checkHigherThirdRow()
-            }
-            else if (btnLower == false){
-                btnLower = true
-                checkLowerThirdRow()
-            }
+            checkButtonThird()
 
 
         }
         thirdCard3.setOnClickListener {
 
-            thirdCard3.setImageResource(deck[random[4]].image)
-            thirdRowCardValue = deck[random[4]].value
+            thirdCard3.setImageResource(card3.image)
+            thirdRowCardValue = card3.value
             disableThirdRow()
-            if(btnHigher == false){
-                btnHigher = true
-                checkHigherThirdRow()
-            }
-            else if (btnLower == false){
-                btnLower = true
-                checkLowerThirdRow()
-            }
+            checkButtonThird()
 
 
         }
         thirdCard4.setOnClickListener {
 
-            thirdCard4.setImageResource(deck[random[4]].image)
-            thirdRowCardValue = deck[random[4]].value
+            thirdCard4.setImageResource(card3.image)
+            thirdRowCardValue = card3.value
             disableThirdRow()
-            if(btnHigher == false){
-                btnHigher = true
-                checkHigherThirdRow()
-            }
-            else if (btnLower == false){
-                btnLower = true
-                checkLowerThirdRow()
-            }
+            checkButtonThird()
 
 
         }
         forthCard1.setOnClickListener {
 
-            forthCard1.setImageResource(deck[random[5]].image)
-            forthRowCardValue = deck[random[5]].value
+            forthCard1.setImageResource(card4.image)
+            forthRowCardValue = card4.value
             disableForthRow()
-            if(btnHigher == false){
-                btnHigher = true
-                checkWinHigher()
-            }
-            else if (btnLower == false){
-                btnLower = true
-                checkWinLower()
-            }
+            checkButtonForth()
 
 
         }
         forthCard2.setOnClickListener {
 
-            forthCard2.setImageResource(deck[random[5]].image)
-            forthRowCardValue = deck[random[5]].value
+            forthCard2.setImageResource(card4.image)
+            forthRowCardValue = card4.value
             disableForthRow()
-            if(btnHigher == false){
-                btnHigher = true
-                checkWinHigher()
-            }
-            else if (btnLower == false){
-                btnLower = true
-                checkWinLower()
-            }
+            checkButtonForth()
 
 
         }
         forthCard3.setOnClickListener {
 
-            forthCard3.setImageResource(deck[random[5]].image)
-            forthRowCardValue = deck[random[5]].value
+            forthCard3.setImageResource(card4.image)
+            forthRowCardValue = card4.value
             disableForthRow()
-            if(btnHigher == false){
-                btnHigher = true
-                checkWinHigher()
-            }
-            else if (btnLower == false){
-                btnLower = true
-                checkWinLower()
-            }
+            checkButtonForth()
 
 
         }
         forthCard4.setOnClickListener {
 
-            forthCard4.setImageResource(deck[random[5]].image)
-            forthRowCardValue = deck[random[5]].value
+            forthCard4.setImageResource(card4.image)
+            forthRowCardValue = card4.value
             disableForthRow()
-            if(btnHigher == false){
-                btnHigher = true
-                checkWinHigher()
-            }
-            else if (btnLower == false){
-                btnLower = true
-                checkWinLower()
-            }
+            checkButtonForth()
 
 
         }
@@ -605,6 +380,46 @@ class MainActivity : AppCompatActivity() {
         else {
             val intent = Intent(this, LooseActivity::class.java)
             startActivity(intent)
+        }
+    }
+    fun checkButtonFirst(){
+        if(btnHigher == false){
+            btnHigher = true
+            checkHigherFirstRow()
+        }
+        else if (btnLower == false){
+            btnLower = true
+            checkLowerFirstRow()
+        }
+    }
+    fun checkButtonSecond(){
+        if(btnHigher == false){
+            btnHigher = true
+            checkHigherSecondRow()
+        }
+        else if (btnLower == false){
+            btnLower = true
+            checkLowerSecondRow()
+        }
+    }
+    fun checkButtonThird(){
+        if(btnHigher == false){
+            btnHigher = true
+            checkHigherThirdRow()
+        }
+        else if (btnLower == false){
+            btnLower = true
+            checkLowerThirdRow()
+        }
+    }
+    fun checkButtonForth(){
+        if(btnHigher == false){
+            btnHigher = true
+            checkWinHigher()
+        }
+        else if (btnLower == false){
+            btnLower = true
+            checkWinLower()
         }
     }
 
