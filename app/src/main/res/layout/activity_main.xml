@@ -223,25 +223,24 @@
     </TableLayout>
 
     <Button
-        android:id="@+id/buttonLower"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="104dp"
-        android:layout_height="94dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/ner"
+        android:id="@+id/buttonHigher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="4dp"
+        android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/randomCardButton"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tableLayout"
-        app:layout_constraintVertical_bias="0.505" />
+        app:layout_constraintVertical_bias="0.489" />
 
     <Button
-        android:id="@+id/buttonHigher"
-        android:layout_width="104dp"
-        android:layout_height="94dp"
-        android:background="@drawable/upp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/buttonLower"
-        app:layout_constraintEnd_toStartOf="@+id/buttonLower"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:id="@+id/buttonLower"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        app:layout_constraintBaseline_toBaselineOf="@+id/buttonHigher"
+        app:layout_constraintEnd_toStartOf="@+id/randomCardButton"
+        app:layout_constraintStart_toEndOf="@+id/buttonHigher" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

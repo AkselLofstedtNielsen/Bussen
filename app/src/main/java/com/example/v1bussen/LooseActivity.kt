@@ -14,7 +14,7 @@ class LooseActivity : AppCompatActivity() {
         looseButton = findViewById(R.id.looseButton)
 
         looseButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, StartScreen::class.java)
             startActivity(intent)
         }
     }
