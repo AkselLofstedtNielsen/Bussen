@@ -4,52 +4,63 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="#FFFFFF"
     tools:context=".StartScreen">
 
     <Button
-        android:id="@+id/playButton1"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="184dp"
-        android:layout_height="106dp"
-        android:text="Higher or Lower"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.208" />
-
-    <Button
         android:id="@+id/HtpButton"
-        style="@style/Widget.AppCompat.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="52dp"
+        android:backgroundTint="#9F0EED"
         android:text="@string/how_to_play"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playButton1"
-        app:layout_constraintVertical_bias="0.753" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/playButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:text="Same Color or Not"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playButton1" />
-
-    <Button
-        android:id="@+id/playButton3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Red or Black"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="138dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/HtpButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playButton2" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/playButton1"
+            android:layout_width="133dp"
+            android:layout_height="match_parent"
+            android:backgroundTint="#FF9903"
+            android:backgroundTintMode="add"
+            android:text="Higher/Lower" />
+
+        <Button
+            android:id="@+id/playButton3"
+            android:layout_width="133dp"
+            android:layout_height="match_parent"
+            android:backgroundTint="#FF0000"
+            android:text="Red/Black" />
+
+        <Button
+            android:id="@+id/playButton2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="#67CC0E"
+            android:text="Color Match" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="411dp"
+        android:layout_height="244dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/pngegg" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

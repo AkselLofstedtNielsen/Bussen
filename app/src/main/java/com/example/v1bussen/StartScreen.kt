@@ -4,7 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.Switch
+import android.widget.ImageView
+
 
 class StartScreen : AppCompatActivity() {
 
@@ -12,6 +13,7 @@ class StartScreen : AppCompatActivity() {
     lateinit var playButton2 :Button
     lateinit var playButton3 :Button
     lateinit var htpButton :Button
+    lateinit var busImage : ImageView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +22,7 @@ class StartScreen : AppCompatActivity() {
 
         var choice = 0
 
-
+        busImage = findViewById(R.id.imageView)
         playButton1 = findViewById(R.id.playButton1)
         playButton2 = findViewById(R.id.playButton2)
         playButton3 = findViewById(R.id.playButton3)
