@@ -10,7 +10,6 @@ import android.widget.ImageButton
 class MainActivity : AppCompatActivity() {
 
 
-
     lateinit var randomCardButton: ImageButton
     lateinit var bottomCard1: ImageButton
     lateinit var bottomCard2: ImageButton
@@ -41,17 +40,16 @@ class MainActivity : AppCompatActivity() {
     var thirdRowCardSuit = ""
     var forthRowCardSuit = ""
     var randomCardSuit = ""
-    
 
     var btnHigher = true
     var btnLower = true
-    var choice : Boolean = false
+    var choice: Int = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        var choiceFromStart = intent.getBooleanExtra("choice",true)
+        var choiceFromStart = intent.getIntExtra("choice", choice)
         choice = choiceFromStart
         val deck = Deck()
         val card1 = deck.getCard()
@@ -98,22 +96,23 @@ class MainActivity : AppCompatActivity() {
         randomCardButton.setOnClickListener {
 
             randomCardButton.setImageResource(cardRandom.image)
-            if(choice){
+            if (choice == 1) {
                 buttonHigher.text = "Higher"
                 buttonLower.text = "Lower"
-            }
-            else{
+            } else if (choice == 2) {
                 buttonHigher.text = "Same color"
                 buttonLower.text = "Not same"
+            } else if (choice == 3) {
+                randomCardButton.visibility = View.INVISIBLE
+                buttonHigher.text = "Red"
+                buttonLower.text = "Black"
+
             }
             buttonLower.visibility = View.VISIBLE
             buttonHigher.visibility = View.VISIBLE
             randomCardValue = cardRandom.value
             randomCardSuit = cardRandom.color
-            bottomCard1.isEnabled = true
-            bottomCard2.isEnabled = true
-            bottomCard3.isEnabled = true
-            bottomCard4.isEnabled = true
+            enableFirstRow()
 
 
         }
@@ -144,7 +143,6 @@ class MainActivity : AppCompatActivity() {
             checkButtonFirst()
 
 
-
         }
         bottomCard3.setOnClickListener {
             bottomCard3.setImageResource(card1.image)
@@ -152,7 +150,6 @@ class MainActivity : AppCompatActivity() {
             firstRowCardSuit = card1.color
             disableFirstRow()
             checkButtonFirst()
-
 
 
         }
@@ -163,7 +160,6 @@ class MainActivity : AppCompatActivity() {
             firstRowCardSuit = card1.color
             disableFirstRow()
             checkButtonFirst()
-
 
 
         }
@@ -317,57 +313,67 @@ class MainActivity : AppCompatActivity() {
         forthCard3.isEnabled = false
         forthCard4.isEnabled = false
     }
+    fun enableFirstRow() {
+        bottomCard1.isEnabled = true
+        bottomCard2.isEnabled = true
+        bottomCard3.isEnabled = true
+        bottomCard4.isEnabled = true
+    }
+
+    fun enableSecondRow() {
+        secondCard1.isEnabled = true
+        secondCard2.isEnabled = true
+        secondCard3.isEnabled = true
+        secondCard4.isEnabled = true
+    }
+
+    fun enableThirdRow() {
+        thirdCard1.isEnabled = true
+        thirdCard2.isEnabled = true
+        thirdCard3.isEnabled = true
+        thirdCard4.isEnabled = true
+    }
+
+    fun enableForthRow() {
+        forthCard1.isEnabled = true
+        forthCard2.isEnabled = true
+        forthCard3.isEnabled = true
+        forthCard4.isEnabled = true
+    }
 
     fun checkHigherFirstRow() { //higher or same color
-        if (choice){
-            if (randomCardValue < firstRowCardValue ) {
-                secondCard1.isEnabled = true
-                secondCard2.isEnabled = true
-                secondCard3.isEnabled = true
-                secondCard4.isEnabled = true
+        if (choice == 1) {
+            if (randomCardValue < firstRowCardValue) {
+                enableSecondRow()
+            } else {
+                val intent = Intent(this, LooseActivity::class.java)
+                startActivity(intent)
             }
-            else {
+        } else if (choice == 2) {
+            if (randomCardSuit == firstRowCardSuit) {
+                enableSecondRow()
+            } else {
                 val intent = Intent(this, LooseActivity::class.java)
                 startActivity(intent)
             }
         }
-        else if (!choice){
-            if (randomCardSuit == firstRowCardSuit ) {
-                secondCard1.isEnabled = true
-                secondCard2.isEnabled = true
-                secondCard3.isEnabled = true
-                secondCard4.isEnabled = true
-            }
-            else {
-                val intent = Intent(this, LooseActivity::class.java)
-                startActivity(intent)
-            }
-        }
-      
+
 
     }
+
     fun checkLowerFirstRow() { // lower or not same color
-        if(choice){
+        if (choice == 1) {
             if (randomCardValue > firstRowCardValue) {
-                secondCard1.isEnabled = true
-                secondCard2.isEnabled = true
-                secondCard3.isEnabled = true
-                secondCard4.isEnabled = true
-            }
-            else {
+                enableSecondRow()
+            } else {
                 val intent = Intent(this, LooseActivity::class.java)
                 startActivity(intent)
             }
-        }
-        else if (!choice){
+        } else if (choice == 2) {
 
-            if (randomCardSuit != firstRowCardSuit ) {
-                secondCard1.isEnabled = true
-                secondCard2.isEnabled = true
-                secondCard3.isEnabled = true
-                secondCard4.isEnabled = true
-            }
-            else {
+            if (randomCardSuit != firstRowCardSuit) {
+                enableSecondRow()
+            } else {
                 val intent = Intent(this, LooseActivity::class.java)
                 startActivity(intent)
             }
@@ -375,26 +381,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun checkHigherSecondRow() { //higher or same color
-        if (choice){
+        if (choice == 1) {
             if (firstRowCardValue < secondRowCardValue) {
-                thirdCard1.isEnabled = true
-                thirdCard2.isEnabled = true
-                thirdCard3.isEnabled = true
-                thirdCard4.isEnabled = true
-            }
-            else {
+                enableThirdRow()
+            } else {
                 val intent = Intent(this, LooseActivity::class.java)
                 startActivity(intent)
             }
-        }
-        else if (!choice){
+        } else if (choice == 2) {
             if (firstRowCardSuit == secondRowCardSuit) {
-                thirdCard1.isEnabled = true
-                thirdCard2.isEnabled = true
-                thirdCard3.isEnabled = true
-                thirdCard4.isEnabled = true
-            }
-            else {
+                enableThirdRow()
+            } else {
                 val intent = Intent(this, LooseActivity::class.java)
                 startActivity(intent)
             }
@@ -402,27 +399,19 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
     fun checkLowerSecondRow() {
-        if(choice){
+        if (choice == 1) {
             if (firstRowCardValue > secondRowCardValue) {
-                thirdCard1.isEnabled = true
-                thirdCard2.isEnabled = true
-                thirdCard3.isEnabled = true
-                thirdCard4.isEnabled = true
-            }
-            else {
+                enableThirdRow()
+            } else {
                 val intent = Intent(this, LooseActivity::class.java)
                 startActivity(intent)
             }
-        }
-        else if (!choice){
+        } else if (choice == 2) {
             if (firstRowCardSuit != secondRowCardSuit) {
-                thirdCard1.isEnabled = true
-                thirdCard2.isEnabled = true
-                thirdCard3.isEnabled = true
-                thirdCard4.isEnabled = true
-            }
-            else {
+                enableThirdRow()
+            } else {
                 val intent = Intent(this, LooseActivity::class.java)
                 startActivity(intent)
             }
@@ -431,26 +420,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun checkHigherThirdRow() {
-        if (choice){
+        if (choice == 1) {
             if (secondRowCardValue < thirdRowCardValue) {
-                forthCard1.isEnabled = true
-                forthCard2.isEnabled = true
-                forthCard3.isEnabled = true
-                forthCard4.isEnabled = true
-            }
-            else {
+                enableForthRow()
+            } else {
                 val intent = Intent(this, LooseActivity::class.java)
                 startActivity(intent)
             }
-        }
-        else if (!choice){
+        } else if (choice == 2) {
             if (secondRowCardSuit == thirdRowCardSuit) {
-                forthCard1.isEnabled = true
-                forthCard2.isEnabled = true
-                forthCard3.isEnabled = true
-                forthCard4.isEnabled = true
-            }
-            else {
+                enableForthRow()
+            } else {
                 val intent = Intent(this, LooseActivity::class.java)
                 startActivity(intent)
             }
@@ -458,49 +438,39 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
     fun checkLowerThirdRow() {
-        if(choice){
+        if (choice == 1) {
             if (secondRowCardValue > thirdRowCardValue) {
-                forthCard1.isEnabled = true
-                forthCard2.isEnabled = true
-                forthCard3.isEnabled = true
-                forthCard4.isEnabled = true
-            }
-            else {
+                enableForthRow()
+            } else {
                 val intent = Intent(this, LooseActivity::class.java)
                 startActivity(intent)
             }
-        }
-        else if (!choice){
+        } else if (choice == 2) {
             if (secondRowCardSuit != thirdRowCardSuit) {
-                forthCard1.isEnabled = true
-                forthCard2.isEnabled = true
-                forthCard3.isEnabled = true
-                forthCard4.isEnabled = true
-            }
-            else {
+                enableForthRow()
+            } else {
                 val intent = Intent(this, LooseActivity::class.java)
                 startActivity(intent)
             }
         }
     }
-    fun checkWinHigher(){
-        if (choice){
+
+    fun checkWinHigher() {
+        if (choice == 1) {
             if (thirdRowCardValue < forthRowCardValue) {
                 val intent = Intent(this, CorrectActivity::class.java)
                 startActivity(intent)
-            }
-            else {
+            } else {
                 val intent = Intent(this, LooseActivity::class.java)
                 startActivity(intent)
             }
-        }
-        else if (!choice){
+        } else if (choice == 2) {
             if (thirdRowCardSuit == forthRowCardSuit) {
                 val intent = Intent(this, CorrectActivity::class.java)
                 startActivity(intent)
-            }
-            else {
+            } else {
                 val intent = Intent(this, LooseActivity::class.java)
                 startActivity(intent)
             }
@@ -508,71 +478,124 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-    fun checkWinLower(){
-        if(choice){
+
+    fun checkWinLower() {
+        if (choice == 1) {
             if (thirdRowCardValue > forthRowCardValue) {
                 val intent = Intent(this, CorrectActivity::class.java)
                 startActivity(intent)
-            }
-            else {
+            } else {
                 val intent = Intent(this, LooseActivity::class.java)
                 startActivity(intent)
             }
-        }
-        else if (!choice){
+        } else if (choice == 2) {
             if (thirdRowCardSuit != forthRowCardSuit) {
                 val intent = Intent(this, CorrectActivity::class.java)
                 startActivity(intent)
-            }
-            else {
+            } else {
                 val intent = Intent(this, LooseActivity::class.java)
                 startActivity(intent)
             }
         }
     }
-    fun checkButtonFirst(){
-        if(btnHigher == false){
-            btnHigher = true
-            checkHigherFirstRow()
-        }
-        else if (btnLower == false){
-            btnLower = true
-            checkLowerFirstRow()
-        }
-    }
-    fun checkButtonSecond(){
-        if(btnHigher == false){
-            btnHigher = true
-            checkHigherSecondRow()
-        }
-        else if (btnLower == false){
-            btnLower = true
-            checkLowerSecondRow()
-        }
-    }
-    fun checkButtonThird(){
-        if(btnHigher == false){
-            btnHigher = true
-            checkHigherThirdRow()
-        }
-        else if (btnLower == false){
-            btnLower = true
-            checkLowerThirdRow()
-        }
-    }
-    fun checkButtonForth(){
-        if(btnHigher == false){
-            btnHigher = true
-            checkWinHigher()
-        }
-        else if (btnLower == false){
-            btnLower = true
-            checkWinLower()
+
+    fun checkButtonFirst() {
+        if (choice == 3) {
+            if (!btnHigher && firstRowCardSuit == "R") {
+                btnHigher = true
+                enableSecondRow()
+            } else if (!btnLower && firstRowCardSuit == "B") {
+                btnLower = true
+                enableSecondRow()
+            } else {
+                val intent = Intent(this, LooseActivity::class.java)
+                startActivity(intent)
+            }
+        } else {
+            if (!btnHigher) {
+                btnHigher = true
+                checkHigherFirstRow()
+            } else if (!btnLower) {
+                btnLower = true
+                checkLowerFirstRow()
+            }
         }
     }
 
+    fun checkButtonSecond() {
+        if (choice == 3) {
+            if (!btnHigher && secondRowCardSuit == "R") {
+                btnHigher = true
+                enableThirdRow()
+            } else if (!btnLower && secondRowCardSuit == "B") {
+                btnLower = true
+                enableThirdRow()
+            } else {
+                val intent = Intent(this, LooseActivity::class.java)
+                startActivity(intent)
+            }
+        } else {
+            if (!btnHigher) {
+                btnHigher = true
+                checkHigherSecondRow()
+            } else if (!btnLower) {
+                btnLower = true
+                checkLowerSecondRow()
+            }
+        }
+    }
+
+    fun checkButtonThird() {
+        if (choice == 3) {
+            if (!btnHigher && thirdRowCardSuit == "R") {
+                btnHigher = true
+                enableForthRow()
+            } else if (!btnLower && thirdRowCardSuit == "B") {
+                btnLower = true
+                enableForthRow()
+            } else {
+                val intent = Intent(this, LooseActivity::class.java)
+                startActivity(intent)
+            }
+        } else {
+            if (!btnHigher) {
+                btnHigher = true
+                checkHigherThirdRow()
+            } else if (!btnLower) {
+                btnLower = true
+                checkLowerThirdRow()
+            }
+        }
+
+    }
+
+    fun checkButtonForth() {
+        if (choice == 3) {
+            if (!btnHigher && forthRowCardSuit == "R") {
+                btnHigher = true
+                val intent = Intent(this, CorrectActivity::class.java)
+                startActivity(intent)
+            } else if (!btnLower && forthRowCardSuit == "B") {
+                btnLower = true
+                val intent = Intent(this, CorrectActivity::class.java)
+                startActivity(intent)
+            } else {
+                val intent = Intent(this, LooseActivity::class.java)
+                startActivity(intent)
+            }
+        } else {
+            if (!btnHigher) { //left button
+                btnHigher = true
+                checkWinHigher()
+            } else if (!btnLower) {//right button
+                btnLower = true
+                checkWinLower()
+            }
 
 
+        }
+
+    }
 }
 
 

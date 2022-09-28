@@ -8,35 +8,41 @@ import android.widget.Switch
 
 class StartScreen : AppCompatActivity() {
 
-    lateinit var playButton :Button
+    lateinit var playButton1 :Button
+    lateinit var playButton2 :Button
+    lateinit var playButton3 :Button
     lateinit var htpButton :Button
 
-    lateinit var HLButton :Button
-    lateinit var RBButton :Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start_screen)
 
-        var choice = false
+        var choice = 0
 
 
-        playButton = findViewById(R.id.playButton)
+        playButton1 = findViewById(R.id.playButton1)
+        playButton2 = findViewById(R.id.playButton2)
+        playButton3 = findViewById(R.id.playButton3)
         htpButton = findViewById(R.id.HtpButton)
-        HLButton = findViewById(R.id.button1)
-        RBButton = findViewById(R.id.button2)
-
-        HLButton.setOnClickListener {
-            choice = true
-        }
-        RBButton.setOnClickListener {
-            choice = false
-        }
 
 
 
-        playButton.setOnClickListener {
+        playButton1.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
+            choice = 1
+            intent.putExtra("choice",choice)
+            startActivity(intent)
+        }
+        playButton2.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            choice = 2
+            intent.putExtra("choice",choice)
+            startActivity(intent)
+        }
+        playButton3.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            choice = 3
             intent.putExtra("choice",choice)
             startActivity(intent)
         }
