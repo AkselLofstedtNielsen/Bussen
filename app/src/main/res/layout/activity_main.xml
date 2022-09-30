@@ -8,26 +8,9 @@
     android:foregroundTintMode="src_over"
     tools:context=".MainActivity">
 
-    <ImageButton
-
-        android:id="@+id/randomCardButton"
-        android:layout_width="90dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="4dp"
-        android:backgroundTint="#FFFFFF"
-        android:contentDescription="@string/app_name"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout"
-        app:layout_constraintVertical_bias="0.617"
-        app:srcCompat="@drawable/joker"
-        tools:ignore="DuplicateSpeakableTextCheck" />
-
     <TableLayout
         android:id="@+id/tableLayout"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -219,29 +202,36 @@
                 app:srcCompat="@drawable/joker" />
 
         </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/buttonHigher"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:backgroundTint="#F44336"
+                android:text="Button" />
+
+            <Button
+                android:id="@+id/buttonLower"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:backgroundTint="#000000"
+                android:text="Button" />
+
+            <ImageButton
+
+                android:id="@+id/randomCardButton"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:backgroundTint="#FFFFFF"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/joker"
+                tools:ignore="DuplicateSpeakableTextCheck" />
+        </TableRow>
     </TableLayout>
-
-    <Button
-        android:id="@+id/buttonHigher"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="4dp"
-        android:backgroundTint="#F44336"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout"
-        app:layout_constraintVertical_bias="0.489" />
-
-    <Button
-        android:id="@+id/buttonLower"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#000000"
-        android:text="Button"
-        app:layout_constraintBaseline_toBaselineOf="@+id/buttonHigher"
-        app:layout_constraintEnd_toStartOf="@+id/randomCardButton"
-        app:layout_constraintStart_toEndOf="@+id/buttonHigher" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
