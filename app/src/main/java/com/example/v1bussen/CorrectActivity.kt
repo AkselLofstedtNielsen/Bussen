@@ -45,6 +45,7 @@ class CorrectActivity : AppCompatActivity() {
         }
         playAgainButton.setOnClickListener {
             val intent = Intent(this, StartScreen::class.java)
+            finish()
             startActivity(intent)
         }
 

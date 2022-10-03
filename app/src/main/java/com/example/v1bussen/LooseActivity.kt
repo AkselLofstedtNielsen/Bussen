@@ -17,6 +17,7 @@ class LooseActivity : AppCompatActivity() {
         gameOver = findViewById(R.id.gameOver)
         looseButton.setOnClickListener {
             val intent = Intent(this, StartScreen::class.java)
+            finish()
             startActivity(intent)
         }
     }
