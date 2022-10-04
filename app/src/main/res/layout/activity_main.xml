@@ -225,14 +225,14 @@
         android:id="@+id/buttonHigher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
+        android:layout_marginStart="44dp"
         android:layout_marginTop="4dp"
         android:backgroundTint="#F44336"
         android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tableLayout"
-        app:layout_constraintVertical_bias="0.489" />
+        app:layout_constraintVertical_bias="0.496" />
 
     <Button
         android:id="@+id/buttonLower"

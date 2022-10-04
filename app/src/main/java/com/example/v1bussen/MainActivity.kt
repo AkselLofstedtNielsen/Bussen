@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        var choiceFromStart = intent.getIntExtra("choice", choice)
+        val choiceFromStart = intent.getIntExtra("choice", choice)
         choice = choiceFromStart
         val deck = Deck()
         val card1 = deck.getCard()
