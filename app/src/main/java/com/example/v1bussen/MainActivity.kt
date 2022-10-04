@@ -49,7 +49,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         val choiceFromStart = intent.getIntExtra("choice", choice)
+
         choice = choiceFromStart
         val deck = Deck()
         val card1 = deck.getCard()
@@ -346,15 +348,13 @@ class MainActivity : AppCompatActivity() {
             if (randomCardValue < firstRowCardValue) {
                 enableSecondRow()
             } else {
-                val intent = Intent(this, LooseActivity::class.java)
-                startActivity(intent)
+                startLooseIntent()
             }
         } else if (choice == 2) {
             if (randomCardSuit == firstRowCardSuit) {
                 enableSecondRow()
             } else {
-                val intent = Intent(this, LooseActivity::class.java)
-                startActivity(intent)
+                startLooseIntent()
             }
         }
 
@@ -366,16 +366,14 @@ class MainActivity : AppCompatActivity() {
             if (randomCardValue > firstRowCardValue) {
                 enableSecondRow()
             } else {
-                val intent = Intent(this, LooseActivity::class.java)
-                startActivity(intent)
+                startLooseIntent()
             }
         } else if (choice == 2) {
 
             if (randomCardSuit != firstRowCardSuit) {
                 enableSecondRow()
             } else {
-                val intent = Intent(this, LooseActivity::class.java)
-                startActivity(intent)
+                startLooseIntent()
             }
         }
     }
@@ -385,15 +383,13 @@ class MainActivity : AppCompatActivity() {
             if (firstRowCardValue < secondRowCardValue) {
                 enableThirdRow()
             } else {
-                val intent = Intent(this, LooseActivity::class.java)
-                startActivity(intent)
+                startLooseIntent()
             }
         } else if (choice == 2) {
             if (firstRowCardSuit == secondRowCardSuit) {
                 enableThirdRow()
             } else {
-                val intent = Intent(this, LooseActivity::class.java)
-                startActivity(intent)
+                startLooseIntent()
             }
 
         }
@@ -405,15 +401,13 @@ class MainActivity : AppCompatActivity() {
             if (firstRowCardValue > secondRowCardValue) {
                 enableThirdRow()
             } else {
-                val intent = Intent(this, LooseActivity::class.java)
-                startActivity(intent)
+                startLooseIntent()
             }
         } else if (choice == 2) {
             if (firstRowCardSuit != secondRowCardSuit) {
                 enableThirdRow()
             } else {
-                val intent = Intent(this, LooseActivity::class.java)
-                startActivity(intent)
+                startLooseIntent()
             }
         }
 
@@ -424,15 +418,13 @@ class MainActivity : AppCompatActivity() {
             if (secondRowCardValue < thirdRowCardValue) {
                 enableForthRow()
             } else {
-                val intent = Intent(this, LooseActivity::class.java)
-                startActivity(intent)
+                startLooseIntent()
             }
         } else if (choice == 2) {
             if (secondRowCardSuit == thirdRowCardSuit) {
                 enableForthRow()
             } else {
-                val intent = Intent(this, LooseActivity::class.java)
-                startActivity(intent)
+                startLooseIntent()
             }
 
         }
@@ -444,15 +436,13 @@ class MainActivity : AppCompatActivity() {
             if (secondRowCardValue > thirdRowCardValue) {
                 enableForthRow()
             } else {
-                val intent = Intent(this, LooseActivity::class.java)
-                startActivity(intent)
+                startLooseIntent()
             }
         } else if (choice == 2) {
             if (secondRowCardSuit != thirdRowCardSuit) {
                 enableForthRow()
             } else {
-                val intent = Intent(this, LooseActivity::class.java)
-                startActivity(intent)
+                startLooseIntent()
             }
         }
     }
@@ -460,19 +450,15 @@ class MainActivity : AppCompatActivity() {
     fun checkWinHigher() {
         if (choice == 1) {
             if (thirdRowCardValue < forthRowCardValue) {
-                val intent = Intent(this, CorrectActivity::class.java)
-                startActivity(intent)
+                startWinIntent()
             } else {
-                val intent = Intent(this, LooseActivity::class.java)
-                startActivity(intent)
+                startLooseIntent()
             }
         } else if (choice == 2) {
             if (thirdRowCardSuit == forthRowCardSuit) {
-                val intent = Intent(this, CorrectActivity::class.java)
-                startActivity(intent)
+                startWinIntent()
             } else {
-                val intent = Intent(this, LooseActivity::class.java)
-                startActivity(intent)
+                startLooseIntent()
             }
 
         }
@@ -482,19 +468,15 @@ class MainActivity : AppCompatActivity() {
     fun checkWinLower() {
         if (choice == 1) {
             if (thirdRowCardValue > forthRowCardValue) {
-                val intent = Intent(this, CorrectActivity::class.java)
-                startActivity(intent)
+                startWinIntent()
             } else {
-                val intent = Intent(this, LooseActivity::class.java)
-                startActivity(intent)
+                startLooseIntent()
             }
         } else if (choice == 2) {
             if (thirdRowCardSuit != forthRowCardSuit) {
-                val intent = Intent(this, CorrectActivity::class.java)
-                startActivity(intent)
+                startWinIntent()
             } else {
-                val intent = Intent(this, LooseActivity::class.java)
-                startActivity(intent)
+                startLooseIntent()
             }
         }
     }
@@ -508,8 +490,7 @@ class MainActivity : AppCompatActivity() {
                 btnLower = true
                 enableSecondRow()
             } else {
-                val intent = Intent(this, LooseActivity::class.java)
-                startActivity(intent)
+                startLooseIntent()
             }
         } else {
             if (!btnHigher) {
@@ -531,8 +512,7 @@ class MainActivity : AppCompatActivity() {
                 btnLower = true
                 enableThirdRow()
             } else {
-                val intent = Intent(this, LooseActivity::class.java)
-                startActivity(intent)
+                startLooseIntent()
             }
         } else {
             if (!btnHigher) {
@@ -554,8 +534,7 @@ class MainActivity : AppCompatActivity() {
                 btnLower = true
                 enableForthRow()
             } else {
-                val intent = Intent(this, LooseActivity::class.java)
-                startActivity(intent)
+                startLooseIntent()
             }
         } else {
             if (!btnHigher) {
@@ -573,15 +552,12 @@ class MainActivity : AppCompatActivity() {
         if (choice == 3) {
             if (!btnHigher && forthRowCardSuit == "R") {
                 btnHigher = true
-                val intent = Intent(this, CorrectActivity::class.java)
-                startActivity(intent)
+                startWinIntent()
             } else if (!btnLower && forthRowCardSuit == "B") {
                 btnLower = true
-                val intent = Intent(this, CorrectActivity::class.java)
-                startActivity(intent)
+                startWinIntent()
             } else {
-                val intent = Intent(this, LooseActivity::class.java)
-                startActivity(intent)
+                startLooseIntent()
             }
         } else {
             if (!btnHigher) { //left button
@@ -595,6 +571,16 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+    }
+    fun startWinIntent(){
+        val intent = Intent(this, CorrectActivity::class.java)
+        finish()
+        startActivity(intent)
+    }
+    fun startLooseIntent(){
+        val intent = Intent(this, LooseActivity::class.java)
+        finish()
+        startActivity(intent)
     }
 }
 

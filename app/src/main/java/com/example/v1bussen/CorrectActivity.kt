@@ -33,7 +33,7 @@ class CorrectActivity : AppCompatActivity() {
         winButton.setOnClickListener {
             textView.visibility = View.VISIBLE
             konfettiView.build()
-                .addColors(Color.GREEN,Color.RED,Color.MAGENTA)
+                .addColors(Color.YELLOW,Color.RED,Color.MAGENTA)
                 .setDirection(0.0,359.0)
                 .setSpeed(1f,5f)
                 .setFadeOutEnabled(true)
@@ -45,6 +45,7 @@ class CorrectActivity : AppCompatActivity() {
         }
         playAgainButton.setOnClickListener {
             val intent = Intent(this, StartScreen::class.java)
+            finish()
             startActivity(intent)
         }
 
