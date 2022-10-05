@@ -120,9 +120,11 @@ class MainActivity : AppCompatActivity() {
         }
         buttonHigher.setOnClickListener {
             btnHigher = false
+            btnLower = true
         }
         buttonLower.setOnClickListener {
             btnLower = false
+            btnHigher = true
         }
 
 
