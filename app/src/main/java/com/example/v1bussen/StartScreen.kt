@@ -9,48 +9,44 @@ import android.widget.ImageView
 
 class StartScreen : AppCompatActivity() {
 
-    lateinit var playButton1 :Button
-    lateinit var playButton2 :Button
-    lateinit var playButton3 :Button
-    lateinit var htpButton :Button
-    lateinit var busImage : ImageView
 
+    var choice = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start_screen)
 
-        var choice = 0
 
-        busImage = findViewById(R.id.imageView)
-        playButton1 = findViewById(R.id.playButton1)
-        playButton2 = findViewById(R.id.playButton2)
-        playButton3 = findViewById(R.id.playButton3)
-        htpButton = findViewById(R.id.HtpButton)
+        val busImage = findViewById<ImageView>(R.id.imageView)
+        val playButton1 = findViewById<Button>(R.id.playButton1)
+        val playButton2 = findViewById<Button>(R.id.playButton2)
+        val playButton3 = findViewById<Button>(R.id.playButton3)
+        val htpButton = findViewById<Button>(R.id.HtpButton)
 
 
 
         playButton1.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
             choice = 1
-            intent.putExtra("choice",choice)
-            startActivity(intent)
+            startMainIntent()
         }
         playButton2.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
             choice = 2
-            intent.putExtra("choice",choice)
-            startActivity(intent)
+            startMainIntent()
         }
         playButton3.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
             choice = 3
-            intent.putExtra("choice",choice)
-            startActivity(intent)
+            startMainIntent()
         }
         htpButton.setOnClickListener {
-            val intent = Intent(this,htpActivity::class.java)
+            val intent = Intent(this, htpActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    fun startMainIntent() {
+        val intent = Intent(this, MainActivity::class.java)
+        intent.putExtra("choice", choice)
+        finish()
+        startActivity(intent)
     }
 }

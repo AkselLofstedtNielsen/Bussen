@@ -8,7 +8,7 @@ import android.widget.ImageView
 
 class LooseActivity : AppCompatActivity() {
     lateinit var looseButton: Button
-    lateinit var gameOver : ImageView
+    lateinit var gameOver: ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_loose)

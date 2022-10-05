@@ -89,11 +89,11 @@ class MainActivity : AppCompatActivity() {
         buttonHigher.visibility = View.INVISIBLE
 
 
-
         disableFirstRow()
         disableSecondRow()
         disableThirdRow()
         disableForthRow()
+
 
         randomCardButton.setOnClickListener {
 
@@ -315,6 +315,7 @@ class MainActivity : AppCompatActivity() {
         forthCard3.isEnabled = false
         forthCard4.isEnabled = false
     }
+
     fun enableFirstRow() {
         bottomCard1.isEnabled = true
         bottomCard2.isEnabled = true
@@ -572,12 +573,14 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-    fun startWinIntent(){
+
+    fun startWinIntent() {
         val intent = Intent(this, CorrectActivity::class.java)
         finish()
         startActivity(intent)
     }
-    fun startLooseIntent(){
+
+    fun startLooseIntent() {
         val intent = Intent(this, LooseActivity::class.java)
         finish()
         startActivity(intent)

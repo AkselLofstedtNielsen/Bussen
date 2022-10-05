@@ -33,15 +33,15 @@ class CorrectActivity : AppCompatActivity() {
         winButton.setOnClickListener {
             textView.visibility = View.VISIBLE
             konfettiView.build()
-                .addColors(Color.YELLOW,Color.RED,Color.MAGENTA)
-                .setDirection(0.0,359.0)
-                .setSpeed(1f,5f)
+                .addColors(Color.GREEN, Color.RED, Color.MAGENTA)
+                .setDirection(0.0, 359.0)
+                .setSpeed(1f, 5f)
                 .setFadeOutEnabled(true)
                 .setTimeToLive(2000L)
                 .addShapes(Shape.Square, Shape.Circle)
                 .addSizes(Size(12))
-                .setPosition(-50f,konfettiView.width+50f,-50f,-50f)
-                .streamFor(300,3000L)
+                .setPosition(-50f, konfettiView.width + 50f, -50f, -50f)
+                .streamFor(300, 3000L)
         }
         playAgainButton.setOnClickListener {
             val intent = Intent(this, StartScreen::class.java)
